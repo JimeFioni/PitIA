@@ -48,13 +48,6 @@ Declarados una sola vez en `:root`, al principio del `<style>`.
 
 Spectral (títulos) · Public Sans (texto) · IBM Plex Mono (etiquetas).
 
-## Pendientes
-
-- [ ] `TU_ID_DE_FORMSPREE` → id real del formulario
-- [ ] `54XXXXXXXXXX` → número del botón de WhatsApp
-- [ ] `https://VIALPARKING-URL` → sitio de VialParking
-- [ ] Plazos reales de las cuatro etapas del método
-
 ## Reglas de marca que afectan al código
 
 - El nombre se escribe siempre `Pit<b>IA</b>`.
