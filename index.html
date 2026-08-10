@@ -294,6 +294,10 @@ a{color:inherit;}
 .form-note{font-family:var(--font-mono);font-size:11px;color:#8B9AA0;letter-spacing:.06em;}
 .hp{position:absolute;left:-9999px;}
 button.btn{border:none;cursor:pointer;font-family:var(--font-body);}
+button.btn[disabled]{opacity:.55;cursor:progress;}
+.form-status{margin:18px 0 0;font-family:var(--font-mono);font-size:12.5px;letter-spacing:.03em;line-height:1.6;padding:13px 16px;border-radius:2px;border:1px solid transparent;}
+.form-status.ok{color:var(--stone);background:rgba(143,163,127,.14);border-color:rgba(143,163,127,.4);}
+.form-status.err{color:#F1D6C7;background:rgba(180,90,60,.12);border-color:rgba(180,90,60,.4);}
 
 /* ── WHATSAPP ── */
 .wa{
@@ -325,6 +329,62 @@ button.btn{border:none;cursor:pointer;font-family:var(--font-body);}
 .wmbg--bl::before{left:-13%;bottom:-26%;right:auto;top:auto;}
 @media (max-width:760px){.wmbg::before{width:82vw;opacity:.09;}.wmbg--light::before{opacity:.04;}}
 
+/* ── MENÚ MÓVIL: la cámara interior ── */
+.nav-toggle{
+  display:none;position:fixed;top:13px;right:var(--gut);z-index:60;
+  width:46px;height:46px;padding:0;border:1px solid var(--rule);border-radius:2px;
+  background:rgba(244,242,236,.85);backdrop-filter:blur(10px);cursor:pointer;
+  place-items:center;transition:border-color .3s var(--ease),background .3s;
+}
+.nav-toggle:hover{border-color:var(--accent);}
+.nav-toggle > svg{grid-area:1 / 1;display:block;transition:opacity .35s var(--ease),transform .45s var(--ease);}
+.nav-toggle .ico-open g{stroke:var(--ink);}
+.nav-toggle .ico-open circle{fill:var(--accent);}
+.nav-toggle .ico-close{opacity:0;transform:rotate(-90deg) scale(.55);}
+.nav-toggle .ico-close line{stroke:var(--stone);}
+body.menu-open .nav-toggle{border-color:rgba(230,228,220,.35);background:transparent;}
+body.menu-open .nav-toggle .ico-open{opacity:0;transform:rotate(90deg) scale(.55);}
+body.menu-open .nav-toggle .ico-close{opacity:1;transform:none;}
+body.menu-open{overflow:hidden;}
+
+.menu{
+  position:fixed;inset:0;z-index:50;background:var(--ink);color:var(--stone);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:96px var(--gut) 44px;overflow-y:auto;
+  opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s var(--ease);
+}
+body.menu-open .menu{opacity:1;visibility:visible;}
+.menu::before{
+  content:"";position:absolute;right:-16%;bottom:-14%;width:min(580px,92vw);aspect-ratio:1;
+  background-repeat:no-repeat;background-size:contain;pointer-events:none;opacity:.08;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Cg%20fill='none'%20stroke='%23E6E4DC'%20stroke-width='1.4'%20stroke-linecap='round'%3E%3Cpath%20d='M13%2035%20A19%2019%200%200%201%2051%2035'/%3E%3Cpath%20d='M20%2035%20L20%2054'/%3E%3Cpath%20d='M32%2035%20L32%2054'/%3E%3Cpath%20d='M44%2035%20L44%2054'/%3E%3Cpath%20d='M10%2054%20L54%2054'/%3E%3C/g%3E%3Ccircle%20cx='32'%20cy='24'%20r='4.5'%20fill='%23E6E4DC'/%3E%3C/svg%3E");
+}
+.menu-in{position:relative;z-index:1;max-width:var(--maxw);width:100%;margin:0 auto;}
+.menu-eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-lift);margin:0 0 30px;}
+.menu-nav{list-style:none;margin:0;padding:0;}
+.menu-nav li{border-top:1px solid rgba(230,228,220,.14);}
+.menu-nav li:last-child{border-bottom:1px solid rgba(230,228,220,.14);}
+.menu-link{display:flex;align-items:baseline;gap:18px;text-decoration:none;color:var(--stone);padding:17px 0;transition:color .3s,padding-left .4s var(--ease);}
+.menu-link:hover,.menu-link:focus-visible{color:var(--accent-lift);padding-left:12px;}
+.menu-num{flex:none;width:26px;font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;color:var(--accent-lift);}
+.menu-label{font-family:var(--font-display);font-size:clamp(27px,7.4vw,40px);line-height:1.04;letter-spacing:-.02em;}
+.menu-cta{align-self:flex-start;display:inline-flex;align-items:center;gap:11px;margin-top:34px;text-decoration:none;font-weight:600;font-size:16px;color:var(--deep);background:var(--accent-lift);padding:15px 28px;border-radius:2px;transition:background .25s,transform .25s var(--ease);}
+.menu-cta:hover{background:var(--stone);transform:translateY(-2px);}
+.menu-foot{margin-top:38px;font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;color:#8B9AA0;line-height:1.95;}
+@media (prefers-reduced-motion:no-preference){
+  .menu-eyebrow,.menu-nav li,.menu-cta,.menu-foot{opacity:0;transform:translateY(14px);}
+  body.menu-open .menu-eyebrow{animation:menuIn .5s var(--ease) .08s forwards;}
+  body.menu-open .menu-nav li{animation:menuIn .55s var(--ease) forwards;}
+  body.menu-open .menu-nav li:nth-child(1){animation-delay:.15s;}
+  body.menu-open .menu-nav li:nth-child(2){animation-delay:.21s;}
+  body.menu-open .menu-nav li:nth-child(3){animation-delay:.27s;}
+  body.menu-open .menu-nav li:nth-child(4){animation-delay:.33s;}
+  body.menu-open .menu-nav li:nth-child(5){animation-delay:.39s;}
+  body.menu-open .menu-cta{animation:menuIn .55s var(--ease) .47s forwards;}
+  body.menu-open .menu-foot{animation:menuIn .55s var(--ease) .55s forwards;}
+  @keyframes menuIn{to{opacity:1;transform:none;}}
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width:980px){
   .hero-grid,.cta-grid{grid-template-columns:1fr;}
@@ -332,6 +392,8 @@ button.btn{border:none;cursor:pointer;font-family:var(--font-body);}
   .cards,.cases{grid-template-columns:1fr;}
   .duo{grid-template-columns:1fr;gap:36px;}
   .nav-links{display:none;}
+  .nav-cta{display:none;}
+  .nav-toggle{display:grid;}
   .watermark{display:none;}
 }
 @media (max-width:560px){
@@ -362,9 +424,39 @@ button.btn{border:none;cursor:pointer;font-family:var(--font-body);}
       <a href="#socias">Quiénes somos</a>
       <a href="#faq">Preguntas</a>
     </div>
-    <a class="nav-cta" href="#contacto">Pedir diagnóstico</a>
+    <a class="nav-cta" href="#contacto">Hablemos</a>
   </div>
 </nav>
+
+<button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
+  <svg class="ico-open" width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
+    <g fill="none" stroke-width="3" stroke-linecap="round">
+      <path d="M13 35 A19 19 0 0 1 51 35"/><path d="M20 35 L20 54"/>
+      <path d="M32 35 L32 54"/><path d="M44 35 L44 54"/><path d="M10 54 L54 54"/>
+    </g>
+    <circle cx="32" cy="24" r="4.5"/>
+  </svg>
+  <svg class="ico-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+    <line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/>
+  </svg>
+</button>
+
+<div class="menu" id="navMenu" role="dialog" aria-modal="true" aria-label="Menú de navegación" aria-hidden="true">
+  <div class="menu-in">
+    <p class="menu-eyebrow">La cámara interior · entrá con una pregunta</p>
+    <ul class="menu-nav">
+      <li><a class="menu-link" href="#metodo"><span class="menu-num">01</span><span class="menu-label">Cómo trabajamos</span></a></li>
+      <li><a class="menu-link" href="#sectores"><span class="menu-num">02</span><span class="menu-label">Para quién</span></a></li>
+      <li><a class="menu-link" href="#proyectos"><span class="menu-num">03</span><span class="menu-label">Proyectos</span></a></li>
+      <li><a class="menu-link" href="#socias"><span class="menu-num">04</span><span class="menu-label">Quiénes somos</span></a></li>
+      <li><a class="menu-link" href="#faq"><span class="menu-num">05</span><span class="menu-label">Preguntas</span></a></li>
+    </ul>
+    <a class="menu-cta" href="#contacto">Hablemos
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+    </a>
+    <div class="menu-foot">El oráculo son tus datos.<br>Córdoba, Argentina — trabajamos en todo el país</div>
+  </div>
+</div>
 
 <header class="hero shell" id="top">
   <svg class="watermark" viewBox="0 0 64 64" aria-hidden="true">
@@ -385,7 +477,7 @@ button.btn{border:none;cursor:pointer;font-family:var(--font-body);}
       <p class="hero-method">Diseñamos procesos. La IA los sostiene.</p>
       <p class="hero-copy">La mayoría de las decisiones que hoy se toman por intuición ya están respondidas en los datos de la operación. Nuestro trabajo es ordenar el proceso que los genera y dejar el sistema andando, documentado y en manos del equipo.</p>
       <div class="hero-actions">
-        <a class="btn btn-solid" href="#contacto">Pedir un diagnóstico</a>
+        <a class="btn btn-solid" href="#contacto">Hablemos</a>
         <a class="btn btn-ghost" href="#metodo">Cómo trabajamos</a>
       </div>
     </div>
@@ -622,7 +714,7 @@ button.btn{border:none;cursor:pointer;font-family:var(--font-body);}
         </div>
       </div>
 
-      <form class="rise" method="POST" action="https://formspree.io/f/TU_ID_DE_FORMSPREE" novalidate>
+      <form class="rise" id="contactForm" method="POST" action="https://formspree.io/f/meajgqod" novalidate>
         <div class="form-grid">
           <div class="field"><label for="f-nombre">Nombre</label>
             <input id="f-nombre" name="nombre" type="text" autocomplete="name" required></div>
@@ -638,11 +730,13 @@ button.btn{border:none;cursor:pointer;font-family:var(--font-body);}
           <div class="field full"><label for="f-msg">¿Qué proceso te está costando caro?</label>
             <textarea id="f-msg" name="mensaje" required></textarea></div>
         </div>
+        <input type="hidden" name="_subject" value="Nueva consulta desde pitia.com.ar">
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="form-foot">
           <button class="btn btn-light" type="submit">Enviar consulta</button>
           <span class="form-note">Sin costo · sin compromiso</span>
         </div>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
       </form>
     </div>
   </div>
@@ -745,6 +839,82 @@ button.btn{border:none;cursor:pointer;font-family:var(--font-body);}
           }, 450);
         }, 6600);
       }, 2200 + idx * 2200);
+    });
+  }
+
+  /* menú móvil: la cámara interior */
+  var toggle = document.getElementById('navToggle');
+  var menu = document.getElementById('navMenu');
+  if (toggle && menu){
+    var lastFocus = null;
+    var isOpen = function(){ return document.body.classList.contains('menu-open'); };
+    var openMenu = function(){
+      lastFocus = document.activeElement;
+      document.body.classList.add('menu-open');
+      toggle.setAttribute('aria-expanded','true');
+      toggle.setAttribute('aria-label','Cerrar menú');
+      menu.setAttribute('aria-hidden','false');
+      var first = menu.querySelector('a');
+      if (first) setTimeout(function(){ first.focus(); }, 140);
+    };
+    var closeMenu = function(){
+      document.body.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded','false');
+      toggle.setAttribute('aria-label','Abrir menú');
+      menu.setAttribute('aria-hidden','true');
+      (lastFocus || toggle).focus();
+    };
+    toggle.addEventListener('click', function(){ isOpen() ? closeMenu() : openMenu(); });
+    menu.addEventListener('click', function(e){ if (e.target.closest('a')) closeMenu(); });
+    document.addEventListener('keydown', function(e){
+      if (!isOpen()) return;
+      if (e.key === 'Escape'){ closeMenu(); return; }
+      if (e.key === 'Tab'){
+        var f = [toggle].concat(Array.prototype.slice.call(menu.querySelectorAll('a[href]')));
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+      }
+    });
+    window.addEventListener('resize', function(){ if (window.innerWidth > 980 && isOpen()) closeMenu(); });
+  }
+
+  /* formulario: envío por AJAX a Formspree, sin salir del sitio */
+  var form = document.getElementById('contactForm');
+  var status = document.getElementById('formStatus');
+  if (form && status && window.fetch){
+    var setStatus = function(msg, kind){
+      status.textContent = msg;
+      status.className = 'form-status ' + kind;
+      status.hidden = false;
+    };
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (form.querySelector('[name="_gotcha"]').value) return; /* bot */
+      if (!form.checkValidity()){ form.reportValidity(); return; }
+      var btn = form.querySelector('button[type="submit"]');
+      var original = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Enviando…';
+      status.hidden = true;
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(res){
+        if (res.ok){
+          form.reset();
+          setStatus('¡Listo! Recibimos tu consulta. Te respondemos dentro de las 24 horas hábiles.', 'ok');
+        } else {
+          return res.json().then(function(data){
+            var m = (data && data.errors && data.errors.length) ? data.errors[0].message : 'No pudimos enviar el mensaje.';
+            setStatus(m + ' Escribinos a jimenafioni@gmail.com.', 'err');
+          });
+        }
+      }).catch(function(){
+        setStatus('Hubo un problema de conexión. Escribinos a jimenafioni@gmail.com o por WhatsApp.', 'err');
+      }).then(function(){
+        btn.disabled = false; btn.textContent = original;
+      });
     });
   }
 })();
