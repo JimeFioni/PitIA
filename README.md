@@ -1,62 +1,91 @@
-# pitia-web
+<p align="center">
+  <img src="assets/banner.png" alt="PitIA — No adivinamos. Calculamos." width="100%">
+</p>
 
-Sitio de **PitIA** — Ingeniería de negocios e IA.
-Córdoba, Argentina. → https://pitia.com.ar
+<p align="center">
+  <b>Diseñamos procesos. La IA los sostiene.</b><br>
+  Sitio institucional de PitIA · <a href="https://pitia.com.ar">pitia.com.ar</a>
+</p>
 
-## Estructura
+<p align="center">
+  <a href="https://pitia.com.ar#contacto"><b>→ Pedir un diagnóstico</b></a>
+</p>
+
+---
+
+## Qué hay acá
 
 ```
 index.html            Sitio completo: HTML, CSS y JS en un solo archivo
 og.png                Imagen que se muestra al compartir el link
+assets/banner.png     Banner de marca
 assets/fotos/         Fotos de las socias
+netlify.toml          Configuración de publicación
 ```
 
-Sin dependencias, sin compilación, sin `npm install`. Se abre el
-archivo en el navegador y funciona.
+Sin dependencias, sin compilación, sin `npm install`.
 
 ## Cómo modificar el contenido
 
-Todo el texto está en `index.html`. Las secciones están marcadas con
-comentarios (`<!-- ══ HERO ══ -->`, `<!-- ══ MÉTODO ══ -->`, etc.).
+Todo el texto está en `index.html`, con las secciones marcadas por
+comentarios (`<!-- ══ HERO ══ -->`, `<!-- ══ MÉTODO ══ -->`).
 
-Para cambios de texto se puede editar directamente desde GitHub:
-abrir el archivo → ícono del lápiz → editar → *Commit changes*.
-Netlify publica el cambio solo, en menos de un minuto.
+Para cambios de texto: abrir el archivo → lápiz → editar → *Commit changes*.
+Netlify publica solo, en menos de un minuto.
 
 ## Colores y tipografías
 
-Están todos declarados una sola vez, al principio del `<style>`, en
-`:root`. Cambiar un color ahí lo cambia en todo el sitio.
+Declarados una sola vez en `:root`, al principio del `<style>`.
 
-```
---ink       #1B2A33   texto principal, fondos oscuros
---accent    #56684E   laurel: acento, la respuesta
---paper     #F4F2EC   fondo principal
---deep      #16221B   fondo de secciones oscuras
-```
+| Token | Color | Uso |
+|---|---|---|
+| `--ink` | `#1B2A33` | Texto principal, fondos oscuros |
+| `--accent` | `#56684E` | Laurel: acentos, la respuesta |
+| `--accent-lift` | `#8FA37F` | Laurel sobre fondo oscuro |
+| `--paper` | `#F4F2EC` | Fondo principal |
+| `--wash` | `#EAEEE3` | Fondo de secciones alternas |
+| `--deep` | `#16221B` | Fondo de secciones oscuras |
 
-Tipografías: Spectral (títulos), Public Sans (texto), IBM Plex Mono
-(etiquetas y numeración). Se cargan desde Google Fonts.
+Spectral (títulos) · Public Sans (texto) · IBM Plex Mono (etiquetas).
 
-## Pendientes antes de publicar
+## Pendientes
 
-Buscar y reemplazar en `index.html`:
-
-- [ ] `TU_ID_DE_FORMSPREE` → id real del formulario (formspree.io)
-- [x] Teléfonos cargados: Jime +54 9 353 240-2451 · Xime +54 9 353 402-5886
+- [ ] `TU_ID_DE_FORMSPREE` → id real del formulario
 - [ ] `54XXXXXXXXXX` → número del botón de WhatsApp
 - [ ] `https://VIALPARKING-URL` → sitio de VialParking
-- [ ] Plazos de las cuatro etapas del método (sección Cómo trabajamos)
-
-## Publicación
-
-Netlify conectado a este repositorio. Cada push a `main` publica.
-Dominio `pitia.com.ar` delegado desde NIC.ar a los servidores de
-nombres que indica Netlify. Certificado SSL automático.
+- [ ] Plazos reales de las cuatro etapas del método
 
 ## Reglas de marca que afectan al código
 
-- El nombre se escribe siempre `Pit<b>IA</b>`, con la I y la A destacadas.
+- El nombre se escribe siempre `Pit<b>IA</b>`.
 - El punto del isotipo nunca va arriba de la bóveda.
-- El laurel (`--accent`) se reserva para acentos, no como fondo de bloque.
-- Toda animación debe respetar `prefers-reduced-motion`.
+- El laurel se reserva para acentos, nunca como fondo de bloque.
+- Toda animación respeta `prefers-reduced-motion`.
+
+---
+
+<table align="center">
+<tr>
+<td align="center" width="330">
+<img src="assets/fotos/ximena-circulo.png" width="110"><br><br>
+<b>Ximena Moral</b><br>
+<sub>DIRECCIÓN DE PROYECTOS E INFRAESTRUCTURA</sub><br><br>
+<a href="https://www.linkedin.com/in/ximena-moral-383b2812">LinkedIn</a> ·
+<a href="mailto:ximenamoral1971@gmail.com">Correo</a> ·
+<a href="tel:+5493534025886">+54 9 353 402-5886</a>
+</td>
+<td align="center" width="330">
+<img src="assets/fotos/jime-circulo.png" width="110"><br><br>
+<b>Jime Fioni</b><br>
+<sub>AUTOMATIZACIÓN E INTELIGENCIA ARTIFICIAL</sub><br><br>
+<a href="https://www.linkedin.com/in/jimena-fioni">LinkedIn</a> ·
+<a href="https://jimenafioni.carrd.co/">Portfolio</a> ·
+<a href="mailto:jimenafioni@gmail.com">Correo</a>
+</td>
+</tr>
+</table>
+
+<p align="center">
+  <sub><i>El oráculo son tus datos.</i></sub><br>
+  <sub>PitIA — Ingeniería de negocios e IA · Córdoba, Argentina</sub>
+</p>
