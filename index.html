@@ -114,13 +114,35 @@ a{color:inherit;}
 .track{position:relative;height:1px;background:rgba(230,228,220,.18);margin-bottom:0;}
 .track-fill{position:absolute;left:0;top:0;height:1px;background:var(--accent-lift);width:0;transition:width 1.4s var(--ease);}
 .is-on .track-fill{width:100%;}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(230,228,220,.16);border:1px solid rgba(230,228,220,.16);border-top:none;}
-.step{background:var(--deep);padding:30px 26px 34px;transition:background .35s var(--ease);}
-.step:hover{background:#1C2B21;}
-.step-n{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;color:var(--accent-lift);margin-bottom:20px;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(230,228,220,.16);border:1px solid rgba(230,228,220,.16);border-top:none;perspective:1500px;}
+.step{position:relative;z-index:1;cursor:pointer;}
+.step-card{position:relative;height:100%;background:var(--deep);padding:30px 26px 34px;overflow:hidden;will-change:transform;
+  transform:translateY(var(--ty,0)) scale(var(--sc,1)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+  transition:transform .4s var(--ease),background .35s var(--ease),box-shadow .55s var(--ease),opacity .45s var(--ease);}
+.step-card > *{position:relative;z-index:1;}
+.step-card::before{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:var(--accent-lift);transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease);z-index:2;}
+.step-card::after{content:attr(data-step);position:absolute;right:6px;bottom:-24px;font-family:var(--font-display);font-size:120px;line-height:1;color:rgba(143,163,127,0);pointer-events:none;transition:color .55s var(--ease),transform .55s var(--ease);transform:translateY(14px);z-index:0;}
+.step:hover .step-card{background:#1C2B21;}
+.step:focus-visible{outline:none;}
+.step:focus-visible .step-card{background:#1C2B21;box-shadow:inset 0 0 0 2px var(--accent-lift);}
+.step-n{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;color:var(--accent-lift);margin-bottom:20px;transition:letter-spacing .4s var(--ease),color .4s;}
 .step h3{font-size:23px;color:var(--stone);margin-bottom:12px;}
 .step p{font-size:14.5px;color:#9DAAAF;line-height:1.6;}
-.step-when{font-family:var(--font-mono);font-size:11px;color:#6F7F86;margin-top:16px;padding-top:14px;border-top:1px solid rgba(230,228,220,.14);}
+.step-when{font-family:var(--font-mono);font-size:11px;color:#6F7F86;margin-top:16px;padding-top:14px;border-top:1px solid rgba(230,228,220,.14);transition:color .4s,border-color .4s;}
+.step.active{z-index:6;}
+.step.active .step-card{background:#1D2C22;box-shadow:0 30px 70px rgba(0,0,0,.48);}
+.step.active .step-card::before{transform:scaleX(1);height:3px;}
+.step.active .step-card::after{color:rgba(143,163,127,.16);transform:translateY(0);}
+.step.active .step-n{letter-spacing:.3em;color:#BBCBAB;}
+.step.active .step-when{color:var(--accent-lift);border-top-color:rgba(143,163,127,.45);}
+.steps.has-active .step:not(.active) .step-card{opacity:.4;}
+@media (prefers-reduced-motion:no-preference){
+  .steps:not(.has-active) .step:hover{z-index:3;}
+  .steps:not(.has-active) .step:hover .step-card{--ty:-6px;--sc:1.02;box-shadow:0 22px 48px rgba(0,0,0,.36);}
+  .steps:not(.has-active) .step:hover .step-card::before{transform:scaleX(1);}
+  .steps:not(.has-active) .step:hover .step-card::after{color:rgba(143,163,127,.1);transform:translateY(0);}
+  .step.active .step-card{--ty:-10px;--sc:1.055;}
+}
 
 /* ── PARA QUIÉN ── */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -526,18 +548,18 @@ body.menu-open .menu{opacity:1;visibility:visible;}
     </div>
     <div class="track" id="track"><div class="track-fill"></div></div>
     <div class="steps">
-      <article class="step rise"><div class="step-n">01</div><h3>Diagnóstico</h3>
+      <article class="step rise"><div class="step-card" data-step="01"><div class="step-n">01</div><h3>Diagnóstico</h3>
         <p>Mapeamos el proceso real, el que pasa todos los días, no el del manual. Salimos con el cuello de botella identificado y cuantificado.</p>
-        <div class="step-when">2 a 3 semanas</div></article>
-      <article class="step rise"><div class="step-n">02</div><h3>Diseño</h3>
+        <div class="step-when">2 a 3 semanas</div></div></article>
+      <article class="step rise"><div class="step-card" data-step="02"><div class="step-n">02</div><h3>Diseño</h3>
         <p>Definimos alcance, responsables e indicadores antes de escribir una línea de código. Acá se decide qué se automatiza y qué no.</p>
-        <div class="step-when">2 semanas</div></article>
-      <article class="step rise"><div class="step-n">03</div><h3>Construcción</h3>
+        <div class="step-when">2 semanas</div></div></article>
+      <article class="step rise"><div class="step-card" data-step="03"><div class="step-n">03</div><h3>Construcción</h3>
         <p>Integramos con los sistemas que ya tienen. Cada decisión automática queda registrada y es auditable: se puede explicar por qué el sistema hizo lo que hizo.</p>
-        <div class="step-when">4 a 10 semanas</div></article>
-      <article class="step rise"><div class="step-n">04</div><h3>Transferencia</h3>
+        <div class="step-when">4 a 10 semanas</div></div></article>
+      <article class="step rise"><div class="step-card" data-step="04"><div class="step-n">04</div><h3>Transferencia</h3>
         <p>Documentación, capacitación y acceso completo. El proceso queda operando con el equipo interno, sin dependencia del proveedor.</p>
-        <div class="step-when">2 semanas</div></article>
+        <div class="step-when">2 semanas</div></div></article>
     </div>
   </div>
 </section>
@@ -939,6 +961,52 @@ body.menu-open .menu{opacity:1;visibility:visible;}
       }).then(function(){
         btn.disabled = false; btn.textContent = original;
       });
+    });
+  }
+
+  /* método: tarjetas con spotlight (clic = viene al frente) + tilt 3D */
+  var steps = document.querySelector('.steps');
+  if (steps){
+    var cards = Array.prototype.slice.call(steps.querySelectorAll('.step'));
+    var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    var setActive = function(card){
+      cards.forEach(function(c){
+        var on = c === card;
+        c.classList.toggle('active', on);
+        c.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      steps.classList.add('has-active');
+    };
+    var clearActive = function(){
+      cards.forEach(function(c){ c.classList.remove('active'); c.setAttribute('aria-pressed','false'); });
+      steps.classList.remove('has-active');
+    };
+    cards.forEach(function(card){
+      card.setAttribute('tabindex','0');
+      card.setAttribute('role','button');
+      card.setAttribute('aria-pressed','false');
+      var toggle = function(){ card.classList.contains('active') ? clearActive() : setActive(card); };
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){ e.preventDefault(); toggle(); }
+        else if (e.key === 'Escape'){ clearActive(); }
+      });
+      if (fine && !reduced){
+        card.addEventListener('pointermove', function(e){
+          if (card.classList.contains('active')) return;
+          var r = card.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width - .5;
+          var py = (e.clientY - r.top) / r.height - .5;
+          card.style.setProperty('--ry', (px * 7).toFixed(2) + 'deg');
+          card.style.setProperty('--rx', (-py * 7).toFixed(2) + 'deg');
+        });
+        card.addEventListener('pointerleave', function(){
+          card.style.removeProperty('--rx'); card.style.removeProperty('--ry');
+        });
+      }
+    });
+    document.addEventListener('click', function(e){
+      if (steps.classList.contains('has-active') && !e.target.closest('.step')) clearActive();
     });
   }
 })();
