@@ -114,16 +114,16 @@ a{color:inherit;}
 .watermark path,.watermark circle{stroke:var(--ink);}
 
 /* ── SIGNATURE: la consulta ── */
-.consulta{border:1px solid var(--rule);background:#fff;border-radius:3px;overflow:hidden;box-shadow:0 1px 0 rgba(27,42,51,.03);}
-.consulta-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding:13px 22px;border-bottom:1px solid var(--rule);background:var(--stone);}
-.pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);}
-.q{padding:20px 22px;border-bottom:1px solid var(--stone);min-height:104px;}
+.consulta{border:1px solid rgba(244,242,236,.14);background:#3F4B36;border-radius:3px;overflow:hidden;box-shadow:0 14px 34px rgba(27,42,51,.14);}
+.consulta-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C9D3BE;padding:13px 22px;border-bottom:1px solid rgba(244,242,236,.16);background:rgba(20,26,16,.35);}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--accent-lift);}
+.q{padding:20px 22px;border-bottom:1px solid rgba(244,242,236,.13);min-height:104px;}
 .q:last-child{border-bottom:none;}
 .q-inner{transition:opacity .45s var(--ease),transform .45s var(--ease);}
 .q.swapping .q-inner{opacity:0;transform:translateY(-8px);}
-.q-ask{font-family:var(--font-display);font-size:17px;line-height:1.35;margin:0 0 10px;}
-.q-src{display:flex;align-items:baseline;gap:9px;font-family:var(--font-mono);font-size:11.5px;color:var(--muted);line-height:1.5;}
-.q-src::before{content:"";flex:none;width:14px;height:1px;background:var(--accent);transform:translateY(-4px);}
+.q-ask{font-family:var(--font-display);font-size:17px;line-height:1.35;margin:0 0 10px;color:var(--paper);}
+.q-src{display:flex;align-items:baseline;gap:9px;font-family:var(--font-mono);font-size:11.5px;color:#B9C3AB;line-height:1.5;}
+.q-src::before{content:"";flex:none;width:14px;height:1px;background:var(--accent-lift);transform:translateY(-4px);}
 
 /* ── SECCIONES ── */
 .sec{padding-top:clamp(64px,9vw,104px);padding-bottom:clamp(64px,9vw,104px);}
