@@ -71,17 +71,20 @@ a{color:inherit;}
 
 /* ── HERO ── */
 .hero{padding-top:clamp(60px,10vw,112px);padding-bottom:clamp(56px,9vw,96px);position:relative;}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,6vw,72px);align-items:start;position:relative;z-index:2;}
+.hero-grid{display:grid;grid-template-columns:1.28fr .72fr;gap:clamp(40px,6.5vw,92px);align-items:start;position:relative;z-index:2;}
 .hero h1{font-size:clamp(46px,8.4vw,92px);letter-spacing:-.03em;}
 .hero h1 span{display:block;}
 .hero h1 .b2{color:var(--accent);}
 .hero-method{font-family:var(--font-display);font-size:clamp(21px,2.6vw,27px);font-weight:300;margin:26px 0 0;max-width:22ch;line-height:1.3;}
-.hero-copy{margin-top:28px;max-width:46ch;color:var(--muted);}
+.hero-right{display:flex;flex-direction:column;padding-top:clamp(24px,5vw,76px);}
+.consulta.rise.is-on{transform:rotate(-1.7deg);}
+.hero-right:hover .consulta.rise.is-on{transform:rotate(0);}
+.hero-copy{margin-top:clamp(30px,4vw,48px);max-width:none;color:var(--muted);font-size:clamp(17px,1.9vw,20px);line-height:1.7;}
 /* lockup de marca animado sobre el titular */
-.hero-brand{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.hero-brand{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
 .hero-brand-mark{flex:none;opacity:0;transform:translateY(6px) scale(.86);transform-origin:center;}
 .hero-brand-dot{transform-origin:32px 24px;}
-.hero-brand-word{font-family:var(--font-display);font-size:clamp(25px,3.1vw,32px);letter-spacing:-.01em;line-height:1;display:inline-flex;}
+.hero-brand-word{font-family:var(--font-display);font-size:clamp(31px,3.9vw,43px);letter-spacing:-.015em;line-height:1;display:inline-flex;}
 .hero-brand-word > span{display:inline-block;opacity:0;transform:translateY(12px);}
 .hero-brand-word .hl{color:var(--accent);font-weight:600;}
 @media (prefers-reduced-motion:no-preference){
@@ -110,11 +113,11 @@ a{color:inherit;}
 .btn-light:hover{background:var(--stone);transform:translateY(-2px);}
 
 /* marca de agua que se dibuja */
-.watermark{position:absolute;right:calc(var(--gut) * -.4);bottom:-40px;width:min(420px,42vw);opacity:.05;pointer-events:none;z-index:1;}
+.watermark{position:absolute;right:calc(var(--gut) * -.4);bottom:-40px;width:min(460px,44vw);opacity:.08;pointer-events:none;z-index:1;}
 .watermark path,.watermark circle{stroke:var(--ink);}
 
 /* ── SIGNATURE: la consulta ── */
-.consulta{border:1px solid rgba(244,242,236,.16);background:#556348;border-radius:3px;overflow:hidden;box-shadow:0 14px 34px rgba(27,42,51,.14);}
+.consulta{border:1px solid rgba(244,242,236,.16);background:#556348;border-radius:3px;overflow:hidden;box-shadow:0 30px 66px rgba(27,42,51,.18);transition:transform .55s var(--ease),box-shadow .55s var(--ease);}
 .consulta-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C9D3BE;padding:13px 22px;border-bottom:1px solid rgba(244,242,236,.16);background:rgba(20,26,16,.35);}
 .pulse{width:6px;height:6px;border-radius:50%;background:var(--accent-lift);}
 .q{padding:20px 22px;border-bottom:1px solid rgba(244,242,236,.13);min-height:104px;}
@@ -526,7 +529,7 @@ body.menu-open .menu{opacity:1;visibility:visible;}
   <div class="hero-grid">
     <div class="rise">
       <div class="hero-brand" aria-label="PitIA">
-        <svg class="hero-brand-mark" width="38" height="38" viewBox="0 0 64 64" aria-hidden="true">
+        <svg class="hero-brand-mark" width="46" height="46" viewBox="0 0 64 64" aria-hidden="true">
           <g fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round">
             <path d="M13 35 A19 19 0 0 1 51 35"/><path d="M20 35 L20 54"/>
             <path d="M32 35 L32 54"/><path d="M44 35 L44 54"/><path d="M10 54 L54 54"/>
@@ -538,13 +541,13 @@ body.menu-open .menu{opacity:1;visibility:visible;}
       <p class="eyebrow">Ingeniería de negocios e IA · Córdoba, Argentina</p>
       <h1><span>No adivinamos.</span><span class="b2">Calculamos.</span></h1>
       <p class="hero-method">Diseñamos procesos. La IA los sostiene.</p>
-      <p class="hero-copy">La mayoría de las decisiones que hoy se toman por intuición ya están respondidas en los datos de la operación. Nuestro trabajo es ordenar el proceso que los genera y dejar el sistema andando, documentado y en manos del equipo.</p>
       <div class="hero-actions">
         <a class="btn btn-solid" href="#contacto">Hablemos</a>
         <a class="btn btn-ghost" href="#metodo">Cómo trabajamos</a>
       </div>
     </div>
 
+    <div class="hero-right">
     <aside class="consulta rise" aria-label="Ejemplos de consultas" aria-live="off">
       <div class="consulta-head"><span>La consulta</span><span class="pulse" aria-hidden="true"></span></div>
       <div class="q" data-slot="0"><div class="q-inner">
@@ -560,7 +563,9 @@ body.menu-open .menu{opacity:1;visibility:visible;}
         <div class="q-src">Está en la facturación de los últimos dieciocho meses.</div>
       </div></div>
     </aside>
+    </div>
   </div>
+  <p class="hero-copy rise">La mayoría de las decisiones que hoy se toman por intuición ya están respondidas en los datos de la operación. Nuestro trabajo es ordenar el proceso que los genera y dejar el sistema andando, documentado y en manos del equipo.</p>
 </header>
 
 
