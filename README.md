@@ -82,3 +82,5 @@ Spectral (títulos) · Public Sans (texto) · IBM Plex Mono (etiquetas).
   <sub><i>El oráculo son tus datos.</i></sub><br>
   <sub>PitIA — Ingeniería de negocios e IA · Córdoba, Argentina</sub>
 </p>
+
+// prueba
