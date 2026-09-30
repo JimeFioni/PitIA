@@ -75,14 +75,6 @@ Spectral (títulos) · Public Sans (texto) · IBM Plex Mono (etiquetas).
 <a href="https://jimenafioni.carrd.co/">Portfolio</a> ·
 <a href="mailto:jimenafioni@gmail.com">Correo</a>
 </td>
-<td align="center" width="330">
-<img src="assets/fotos/pedro.png" width="110"><br><br>
-<b>Pedro Bonafé</b><br>
-<sub>INGENIERÍA DE DATOS, AGENTES DE IA Y CLOUD</sub><br><br>
-<a href="https://www.linkedin.com/in/pedrobonafe/">LinkedIn</a> ·
-<a href="mailto:bonafepedro@gmail.com">Correo</a> ·
-<a href="tel:+543512090589">+54 351 209-0589</a>
-</td>
 </tr>
 </table>
 
