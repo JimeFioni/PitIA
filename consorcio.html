@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PitIA — Portal del Consorcio N.º 110</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tinta:#1B2A33; --verde-tinta:#16221B; --laurel:#56684E; --laurel-claro:#8FA37F;
+  --pergamino:#F4F2EC; --piedra:#E6E4DC; --ceniza:#C3BFB2; --tinte-claro:#EAEEE3;
+  --prio-critica:#A6432B; --ambar:#C68A2E; --agua:#2E6E8E;
+  --shadow:0 1px 2px rgba(27,42,51,.06),0 8px 24px rgba(27,42,51,.08);
+  --serif:'Spectral',Georgia,serif; --sans:'Public Sans',-apple-system,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--pergamino);color:var(--tinta);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+.muted{color:#8a9299}
+.topbar{background:var(--verde-tinta);color:var(--pergamino);display:flex;align-items:center;justify-content:space-between;padding:14px 28px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-name{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:.3px}
+.brand-name .ia{color:var(--laurel-claro)}
+.brand-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:#aab6a2;margin-top:1px}
+.portal{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#aab6a2;text-align:right}
+.wrap{max-width:1060px;margin:0 auto;padding:30px 24px 64px}
+.chead{margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--laurel);margin-bottom:8px}
+.chead h1{font-family:var(--serif);font-size:34px;font-weight:600;margin:0 0 4px}
+.chead .sub{color:#6a7278;margin:0 0 20px;font-size:15px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tile{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+.tile .v{font-family:var(--serif);font-size:25px;line-height:1.05}
+.tile .v small{font-size:13px;color:#8a9299}
+.tile .l{font-size:12px;color:#6a7278;margin-top:4px}
+.sec{margin-top:34px}
+.sec>h2{font-family:var(--serif);font-size:20px;font-weight:600;margin:0 0 14px;padding-bottom:9px;border-bottom:1px solid var(--piedra)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{background:#fff;border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+.k{font-family:var(--mono);font-size:9px;letter-spacing:.5px;text-transform:uppercase;color:#8a9299;margin-bottom:10px}
+.bar{height:7px;border-radius:4px;background:var(--piedra);overflow:hidden;margin-top:5px}
+.bar>i{display:block;height:7px;border-radius:4px;background:var(--laurel)}
+.rowb{display:flex;justify-content:space-between;font-size:12.5px;margin-top:12px}
+.st{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.3px;text-transform:uppercase;padding:3px 8px;border-radius:6px}
+table{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+th{text-align:left;font-family:var(--mono);font-size:9px;letter-spacing:.5px;text-transform:uppercase;color:#8a9299;padding:11px 12px;border-bottom:1px solid var(--piedra);background:#fbfaf6}
+td{padding:11px 12px;border-bottom:1px solid #f0ece2;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+.row-me{background:var(--tinte-claro)}
+.kv{display:grid;grid-template-columns:140px 1fr;gap:4px 14px;margin:0;font-size:13px}
+.kv dt{color:#8a9299;font-size:11.5px;padding-top:2px}
+.kv dd{margin:0}
+.sel{font-size:12.5px;padding:7px 10px;border-radius:8px;border:1px solid #cfd3c7;background:#fff;color:var(--tinta);max-width:210px}
+.chipdot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:middle}
+/* WhatsApp */
+.wa-phone{max-width:320px;margin:0;border-radius:24px;overflow:hidden;border:1px solid #d5d0c6;box-shadow:0 12px 30px rgba(27,42,51,.20);background:#ECE5DD;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+.wa-top{background:#075E54;color:#fff;display:flex;align-items:center;gap:9px;padding:10px 12px}
+.wa-back{font-size:20px;line-height:1;opacity:.95;font-weight:700}
+.wa-av{width:31px;height:31px;border-radius:50%;background:#cfd8dc;color:#075E54;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:0 0 auto}
+.wa-who{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.wa-who b{font-size:13.5px;font-weight:600}
+.wa-who small{font-size:10.5px;opacity:.85}
+.wa-ic{margin-left:auto;display:flex;gap:14px;font-size:13px;opacity:.95}
+.wa-body{padding:12px 9px 8px;background:#ECE5DD}
+.wa-day{display:block;width:max-content;margin:0 auto 12px;background:#E1F3FB;color:#5b7083;font-size:10px;padding:3px 10px;border-radius:8px}
+.wb{position:relative;max-width:82%;padding:6px 10px 17px;border-radius:8px;font-size:12.7px;color:#111b21;margin-bottom:8px;box-shadow:0 1px .6px rgba(0,0,0,.15);line-height:1.35;word-wrap:break-word}
+.wb .t{position:absolute;right:9px;bottom:4px;font-size:9px;color:#667781;white-space:nowrap}
+.wb.in{background:#fff;border-top-left-radius:2px;margin-right:auto}
+.wb.out{background:#DCF8C6;border-top-right-radius:2px;margin-left:auto}
+.wb .ck{color:#53bdeb;font-size:10px}
+.wb.pic{padding:4px 4px 17px;max-width:80%}
+.wb.pic img{display:block;width:100%;border-radius:5px;margin-bottom:4px;cursor:zoom-in}
+.wb.pic .cap{padding:0 5px}
+.lb{position:fixed;inset:0;background:rgba(16,25,20,.88);display:none;align-items:center;justify-content:center;z-index:9999;padding:24px;cursor:zoom-out}
+.lb.on{display:flex}
+.lb img{max-width:96%;max-height:92%;border-radius:8px}
+.alertgrid{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start}
+@media(max-width:820px){.tiles{grid-template-columns:1fr 1fr}.grid2,.alertgrid{grid-template-columns:1fr}.wa-phone{max-width:340px;margin:0 auto}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <svg width="42" height="42" viewBox="0 0 64 64" aria-label="PitIA">
+      <g fill="none" stroke="#EAEEE3" stroke-width="2.5" stroke-linecap="round">
+        <path d="M13 35 A19 19 0 0 1 51 35"/><path d="M20 35 L20 54"/><path d="M32 35 L32 54"/><path d="M44 35 L44 54"/><path d="M10 54 L54 54"/>
+      </g><circle cx="32" cy="24" r="4.5" fill="#8FA37F"/>
+    </svg>
+    <div><div class="brand-name">Pit<span class="ia">IA</span></div><div class="brand-sub">Ingeniería de negocios e IA</div></div>
+  </div>
+  <div class="portal"><a href="caminos-rurales.html" style="color:var(--laurel-claro);text-decoration:none">← Tablero de mando</a><div style="margin-top:3px">Portal del Consorcio</div></div>
+</div>
+
+<div class="wrap">
+  <header class="chead">
+    <div class="eyebrow">Portal del consorcio · demo</div>
+    <h1>Consorcio Caminero N.º 110</h1>
+    <p class="sub">Marcos Juárez · Córdoba — gestión de infraestructura rural</p>
+    <div class="tiles" id="tiles"></div>
+  </header>
+
+  <section class="sec"><h2>Presupuesto y cumplimiento</h2><div class="grid2" id="s-presup"></div></section>
+  <section class="sec"><h2>Marco legal y contratos</h2><div id="s-legales"></div></section>
+  <section class="sec"><h2>Empresas ejecutoras — desempeño y cupo femenino</h2><div id="s-empresas"></div></section>
+  <section class="sec"><h2>Ranking de consorcios por cumplimiento</h2><div id="s-ranking"></div></section>
+  <section class="sec"><h2>Alertas tempranas</h2><div id="s-alertas"></div></section>
+</div>
+
+<div class="lb" id="lightbox" onclick="this.classList.remove('on')"><img alt=""></div>
+
+<script>
+var _ars = n => '$ '+n.toLocaleString('es-AR');
+var META=30, CUPO=50;
+var EMPRESAS=[
+  {id:'VC', nom:'Vial Centro SRL', foco:'Señalización y balizamiento', contrato:'CTO-2026-07', obj:'Señalización, balizamiento y cartelería vial', presup:18500000, ejec:11200000, estado:'en_proceso', cupo:42, desemp:82},
+  {id:'CE', nom:'Caminos del Este SA', foco:'Mantenimiento vial y maquinaria', contrato:'CTO-2026-11', obj:'Mantenimiento de caminos, perfilado y maquinaria', presup:24000000, ejec:9600000, estado:'en_proceso', cupo:28, desemp:71},
+  {id:'HV', nom:'Hidrovial SRL', foco:'Agua, desagües y drenaje', contrato:'CTO-2026-14', obj:'Obras de agua, desagües, alcantarillas y drenaje', presup:15800000, ejec:14200000, estado:'por_certificar', cupo:50, desemp:88}
+];
+var EMPNAME={}; EMPRESAS.forEach(function(e){EMPNAME[e.id]=e.nom;});
+var CONSORCIO={asignado:72000000, comprometido:EMPRESAS.reduce((a,b)=>a+b.presup,0), ejecutado:EMPRESAS.reduce((a,b)=>a+b.ejec,0)};
+var estLbl={en_proceso:'en ejecución', por_certificar:'por certificar', completada:'completada'};
+var RANKING=[
+  {n:'N.º 98', dep:'Monte Buey', cump:71, cupo:46},
+  {n:'N.º 121', dep:'Bell Ville', cump:64, cupo:38},
+  {n:'N.º 110', dep:'Marcos Juárez', cump:57, cupo:50, me:true},
+  {n:'N.º 104', dep:'Leones', cump:52, cupo:33},
+  {n:'N.º 87', dep:'Inriville', cump:49, cupo:41},
+  {n:'N.º 133', dep:'General Roca', cump:44, cupo:27},
+  {n:'N.º 76', dep:'Corral de Bustos', cump:39, cupo:22}
+];
+var PRIOCOL={critica:'#A6432B',alta:'#56684E',media:'#8FA37F'}, PRIOLBL={critica:'Crítica',alta:'Alta',media:'Media'};
+var CV_ALERTAS=[
+  {id:'AL-028', tit:'Corte de camino por lluvias', loc:'Camino Provincial S340 · km 7,2', prio:'critica', asig:'HV'},
+  {id:'AL-031', tit:'Poste de luz caído sobre la vecinal', loc:'Camino T110-28 · km 10', prio:'alta', asig:''},
+  {id:'AL-033', tit:'Alcantarilla obstruida tras la tormenta', loc:'Vecinal Los Molles · km 4,1', prio:'media', asig:''}
+];
+
+function bar(w,c){c=c||'var(--laurel)';return '<div class="bar"><i style="width:'+Math.min(100,w)+'%;background:'+c+'"></i></div>';}
+function chip(t,c){return '<span class="st" style="background:'+c+'1f;color:'+c+'">'+t+'</span>';}
+function zoomImg(src){var lb=document.getElementById('lightbox');lb.querySelector('img').src=src;lb.classList.add('on');}
+
+function radarSVG(vals,labels,color,size){
+  size=size||170; var W=size+92, H=size, cx=W/2, cy=H/2, R=H*0.30, n=vals.length;
+  function pt(i,r){var a=-Math.PI/2+i*2*Math.PI/n;return [cx+r*Math.cos(a), cy+r*Math.sin(a)];}
+  var rings='';[0.25,0.5,0.75,1].forEach(function(f){var p=[];for(var i=0;i<n;i++){var q=pt(i,R*f);p.push(q[0].toFixed(1)+','+q[1].toFixed(1));}rings+='<polygon points="'+p.join(' ')+'" fill="none" stroke="#e2ddd0" stroke-width="1"/>';});
+  var axes='';for(var i=0;i<n;i++){var q=pt(i,R);axes+='<line x1="'+cx+'" y1="'+cy+'" x2="'+q[0].toFixed(1)+'" y2="'+q[1].toFixed(1)+'" stroke="#e2ddd0" stroke-width="1"/>';}
+  var vp=[];for(var i=0;i<n;i++){var q=pt(i,R*Math.max(0,Math.min(100,vals[i]))/100);vp.push(q[0].toFixed(1)+','+q[1].toFixed(1));}
+  var poly='<polygon points="'+vp.join(' ')+'" fill="'+color+'38" stroke="'+color+'" stroke-width="2"/>';
+  var dots='';for(var i=0;i<n;i++){var q=pt(i,R*Math.max(0,Math.min(100,vals[i]))/100);dots+='<circle cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)+'" r="2.8" fill="'+color+'"/>';}
+  var labs='';for(var i=0;i<n;i++){var q=pt(i,R+13);var anc=(Math.abs(q[0]-cx)<8)?'middle':(q[0]>cx?'start':'end');labs+='<text x="'+q[0].toFixed(1)+'" y="'+q[1].toFixed(1)+'" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#6a7278" text-anchor="'+anc+'" dominant-baseline="middle">'+labels[i]+'</text>';}
+  return '<svg width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'">'+rings+axes+poly+dots+labs+'</svg>';
+}
+function buildAerialSVG(){
+  var W=800,H=560,cols=10,rows=7,cw=W/cols,ch=H/rows;
+  var fields=['#6f7856','#7c8460','#889066','#98a06f','#5f6b4d','#b3aa7d','#a7ad74','#707c52','#849069'];
+  var r='';for(var j=0;j<rows;j++)for(var i=0;i<cols;i++){var c=fields[(i*3+j*5+((i*j)%3))%fields.length];r+='<rect x="'+(i*cw)+'" y="'+(j*ch)+'" width="'+cw+'" height="'+ch+'" fill="'+c+'"/>';}
+  var roads='';for(var i2=0;i2<=cols;i2++)roads+='<line x1="'+(i2*cw)+'" y1="0" x2="'+(i2*cw)+'" y2="'+H+'" stroke="#d8cba8" stroke-width="3"/>';
+  for(var j2=0;j2<=rows;j2++)roads+='<line x1="0" y1="'+(j2*ch)+'" x2="'+W+'" y2="'+(j2*ch)+'" stroke="#d8cba8" stroke-width="3"/>';
+  var river='<path d="M0 '+(H*0.9)+' C '+(W*0.25)+' '+(H*0.72)+', '+(W*0.42)+' '+(H*0.6)+', '+(W*0.6)+' '+(H*0.45)+' S '+(W*0.85)+' '+(H*0.2)+', '+W+' '+(H*0.15)+'" fill="none" stroke="#4f6f6a" stroke-width="7" stroke-opacity="0.85"/>';
+  return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'">'+r+roads+river+'</svg>');
+}
+function buildCorteSVG(){
+  var W=760,H=460;
+  var clouds='';[[120,66,120,34],[310,48,165,40],[520,78,140,32],[670,54,120,30]].forEach(function(c){clouds+='<ellipse cx="'+c[0]+'" cy="'+c[1]+'" rx="'+c[2]+'" ry="'+c[3]+'" fill="#5f666d" opacity="0.42"/>';});
+  var pc=['#79835f','#86905f','#5f6b4d','#707c52','#8a935f'],patch='';
+  for(var i=0;i<6;i++){patch+='<rect x="'+(i*132)+'" y="'+(196+(i%2)*16)+'" width="150" height="92" fill="'+pc[i%pc.length]+'" opacity="0.5"/>';}
+  var road='<polygon points="352,188 408,188 616,460 144,460" fill="url(#cRoad)"/><polygon points="372,188 388,188 474,460 286,460" fill="#b3996a" opacity="0.4"/>';
+  var water='<path d="M0,298 C120,284 222,312 330,300 C462,286 560,318 760,300 L760,394 C560,408 470,382 330,394 C230,404 120,378 0,392 Z" fill="url(#cWater)"/>'+
+    '<path d="M20,318 C150,308 262,330 360,320 C480,310 582,334 740,322" fill="none" stroke="#c6a86e" stroke-width="3" opacity="0.6"/>'+
+    '<path d="M40,360 C170,352 282,372 380,362 C500,352 602,374 722,360" fill="none" stroke="#8a6a44" stroke-width="2" opacity="0.7"/>';
+  var rain='';for(var r=0;r<64;r++){var x=(r*59)%W,y=(r*37)%H;rain+='<line x1="'+x+'" y1="'+y+'" x2="'+(x-8)+'" y2="'+(y+20)+'" stroke="#e8eaec" stroke-width="1" opacity="0.14"/>';}
+  var defs='<defs><linearGradient id="cSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#737a82"/><stop offset="1" stop-color="#aeb4b8"/></linearGradient><linearGradient id="cRoad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4b188"/><stop offset="1" stop-color="#b19c72"/></linearGradient><linearGradient id="cWater" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9c7b4e"/><stop offset="1" stop-color="#6e5536"/></linearGradient></defs>';
+  return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'">'+defs+'<rect width="'+W+'" height="200" fill="url(#cSky)"/>'+clouds+'<rect x="0" y="188" width="'+W+'" height="'+(H-188)+'" fill="#6f7856"/>'+patch+road+water+rain+'</svg>');
+}
+var IMG_CORTE=buildCorteSVG();
+
+/* ---- derived ---- */
+var comprPct=Math.round(CONSORCIO.comprometido/CONSORCIO.asignado*100);
+var avAsig=Math.round(CONSORCIO.ejecutado/CONSORCIO.asignado*100);
+var avContr=Math.round(CONSORCIO.ejecutado/CONSORCIO.comprometido*100);
+var cob=64, equiT=58;
+var cvScore=Math.round(0.30*CUPO+0.30*avContr+0.20*cob+0.20*equiT);
+var sortR=RANKING.slice().sort((a,b)=>b.cump-a.cump);
+var myRank=sortR.findIndex(r=>r.me)+1;
+
+/* ---- tiles ---- */
+document.getElementById('tiles').innerHTML=
+  '<div class="tile"><div class="v">'+_ars(CONSORCIO.asignado).replace(/\\s/,'')+'</div><div class="l">Presupuesto asignado (FDA)</div></div>'
+  +'<div class="tile"><div class="v">'+cvScore+'<small>/100</small></div><div class="l">Score de cumplimiento</div></div>'
+  +'<div class="tile"><div class="v">'+CUPO+'<small>%</small></div><div class="l">Cupo femenino · meta ≥ '+META+'%</div></div>'
+  +'<div class="tile"><div class="v">'+myRank+'.º<small>/'+RANKING.length+'</small></div><div class="l">Ranking entre consorcios</div></div>';
+
+/* ---- presupuesto + radar ---- */
+document.getElementById('s-presup').innerHTML=
+  '<div class="box"><div class="k">Presupuesto del consorcio</div>'
+  +'<div style="font-family:var(--serif);font-size:30px;line-height:1">'+_ars(CONSORCIO.asignado)+'</div>'
+  +'<div class="muted" style="font-size:12px;margin-bottom:6px">asignado por la Provincia · Fondo de Desarrollo Agropecuario (ciclo anual)</div>'
+  +'<div class="rowb"><span class="muted">Comprometido en contratos</span><span><b>'+_ars(CONSORCIO.comprometido)+'</b></span></div>'+bar(comprPct,'#56684E')
+  +'<div class="rowb"><span class="muted">Ejecutado / certificado</span><span><b>'+_ars(CONSORCIO.ejecutado)+'</b></span></div>'+bar(avAsig,'#8FA37F')
+  +'<div class="muted" style="font-size:11px;margin-top:8px">'+avAsig+'% ejecutado · '+comprPct+'% comprometido del total asignado</div></div>'
+  +'<div class="box"><div class="k">Score de cumplimiento · acceso a fondos</div>'
+  +'<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
+  +'<div>'+radarSVG([CUPO,avContr,cob,equiT],['Cupo fem.','Avance','Cobertura','Equidad'],'#56684E',172)+'</div>'
+  +'<div style="flex:1;min-width:150px">'
+  +'<div style="font-family:var(--serif);font-size:30px;color:var(--laurel);margin-bottom:6px">'+cvScore+'<span style="font-size:13px;color:#8a9299"> /100</span></div>'
+  +['Cupo femenino|'+CUPO+'%|#8FA37F','Avance de obra|'+avContr+'%|#56684E','Cobertura de red|'+cob+'|#2E6E8E','Equidad territorial|'+equiT+'|#C68A2E'].map(function(r){var a=r.split('|');return '<div class="rowb" style="margin-top:6px"><span><i class="chipdot" style="background:'+a[2]+'"></i>'+a[0]+'</span><span><b>'+a[1]+'</b></span></div>';}).join('')
+  +'</div></div>'
+  +'<div class="muted" style="font-size:11px;margin-top:10px">El cupo femenino pondera el score del consorcio para priorizar el acceso a fondos.</div></div>';
+
+/* ---- legales ---- */
+document.getElementById('s-legales').innerHTML=
+  '<div class="box" style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px"><div><div style="font-family:var(--serif);font-size:16px;font-weight:600">Contrato marco del consorcio</div><div class="muted" style="font-size:11.5px">CTO-MARCO-2026-110 · contrato tipo (demo)</div></div>'+chip('vigente','#56684E')+'</div>'
+  +'<dl class="kv"><dt>Objeto</dt><dd>Plan de infraestructura rural del Consorcio N.º 110: relevamiento, señalización, obras de agua, puentes, electrificación y conectividad.</dd>'
+  +'<dt>Partes</dt><dd>Provincia de Córdoba (Dirección Provincial de Vialidad) · Consorcio Caminero N.º 110</dd>'
+  +'<dt>Monto</dt><dd>'+_ars(CONSORCIO.asignado)+' (ciclo anual)</dd>'
+  +'<dt>Plazo</dt><dd>12 meses · rendición trimestral</dd>'
+  +'<dt>Marco</dt><dd>Régimen provincial de Consorcios Camineros de Córdoba · Fondo de Desarrollo Agropecuario (FDA)</dd>'
+  +'<dt>Cláusulas clave</dt><dd>Cupo femenino mínimo '+META+'% en las empresas ejecutoras · trazabilidad ambiental (EUDR) · señalización según el Manual de Señalamiento Vial.</dd></dl></div>'
+  +'<table><thead><tr><th>Contrato</th><th>Empresa</th><th>Objeto</th><th>Monto</th><th>Avance</th><th>Estado</th></tr></thead><tbody>'
+  +EMPRESAS.map(function(e){var av=Math.round(e.ejec/e.presup*100);return '<tr><td style="font-family:var(--mono);font-size:11px">'+e.contrato+'</td><td><b>'+e.nom+'</b></td><td class="muted">'+e.obj+'</td><td>'+_ars(e.presup)+'</td><td>'+av+'%</td><td>'+chip(estLbl[e.estado], e.estado==='por_certificar'?'#C68A2E':'#56684E')+'</td></tr>';}).join('')
+  +'</tbody></table>';
+
+/* ---- empresas ---- */
+document.getElementById('s-empresas').innerHTML=
+  '<table><thead><tr><th>Empresa ejecutora</th><th>Desempeño</th><th>Cupo femenino</th><th>Avance presup.</th><th>Estado</th></tr></thead><tbody>'
+  +EMPRESAS.map(function(e){var av=Math.round(e.ejec/e.presup*100);var low=e.cupo<META;
+    return '<tr><td><b>'+e.nom+'</b><div class="muted" style="font-size:10.5px">'+e.foco+' · '+e.contrato+'</div></td>'
+    +'<td style="min-width:150px"><b>'+e.desemp+'</b><span class="muted">/100</span>'+bar(e.desemp,'#56684E')+'</td>'
+    +'<td style="min-width:160px"><b>'+e.cupo+'%</b> '+(low?chip('bajo cupo','#A6432B'):chip('cumple','#56684E'))+bar(e.cupo,low?'#A6432B':'#8FA37F')+'<div class="muted" style="font-size:9.5px;margin-top:2px">meta ≥ '+META+'%</div></td>'
+    +'<td>'+av+'%<div class="muted" style="font-size:9.5px">'+_ars(e.ejec)+'</div></td>'
+    +'<td>'+chip(estLbl[e.estado], e.estado==='por_certificar'?'#C68A2E':'#56684E')+'</td></tr>';}).join('')
+  +'</tbody></table>';
+
+/* ---- ranking ---- */
+document.getElementById('s-ranking').innerHTML=
+  '<p class="muted" style="font-size:13px;margin:0 0 12px">Este consorcio está <b style="color:var(--laurel)">'+myRank+'.º de '+RANKING.length+'</b>. La variable de cupo femenino forma parte del cumplimiento.</p>'
+  +'<table><thead><tr><th>#</th><th>Consorcio</th><th>Departamento</th><th>Cumplimiento</th><th>Cupo femenino</th><th></th></tr></thead><tbody>'
+  +sortR.map(function(r,i){var c=r.cump>=60?'#56684E':(r.cump>=45?'#C68A2E':'#A6432B');var cc=r.cupo>=META?'#56684E':'#A6432B';
+    return '<tr class="'+(r.me?'row-me':'')+'"><td><b>'+(i+1)+'º</b></td><td><b>Consorcio '+r.n+'</b>'+(r.me?' <span class="muted">· este consorcio</span>':'')+'</td><td class="muted">'+r.dep+'</td>'
+    +'<td style="min-width:160px"><b>'+r.cump+'%</b>'+bar(r.cump,c)+'</td>'
+    +'<td style="min-width:120px"><b style="color:'+cc+'">'+r.cupo+'%</b>'+bar(r.cupo,cc)+'</td>'
+    +'<td>'+(r.me?chip('vos','#56684E'):'')+'</td></tr>';}).join('')
+  +'</tbody></table>';
+
+/* ---- alertas: WhatsApp + designación ---- */
+var locBg=buildAerialSVG();
+var locThumb='<div style="width:214px;height:116px;border-radius:9px;overflow:hidden;position:relative;background-image:url(\''+locBg+'\');background-size:cover;background-position:52% 46%">'
+  +'<div style="position:absolute;left:50%;top:42%;transform:translate(-50%,-100%);font-size:24px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.4))">📍</div>'
+  +'<div style="position:absolute;left:0;right:0;bottom:0;background:rgba(27,42,51,.8);color:#fff;font-size:10px;padding:4px 7px">Camino Provincial S340 · km 7,2</div></div>';
+var bub=''
+  +'<div class="wb in">Buenas, soy Pedro, vecino del campo sobre el S340. Anoche con la tormenta el agua cortó el camino, se llevó un pedazo y no se puede pasar<span class="t">07:12</span></div>'
+  +'<div class="wb out">Gracias por avisar, Pedro. ¿Nos pasás una foto y la ubicación? 📍<span class="t">07:13 <span class="ck">✓✓</span></span></div>'
+  +'<div class="wb in pic"><img src="'+IMG_CORTE+'" onclick="zoomImg(IMG_CORTE)"><div class="cap">Así quedó esta mañana</div><span class="t">07:14</span></div>'
+  +'<div class="wb in" style="padding:4px">'+locThumb+'<span class="t">07:15</span></div>'
+  +'<div class="wb out">Recibido. Generamos una ALERTA TEMPRANA y la orden ORD-2028 (CRÍTICA): corte de camino por lluvias.<span class="t">07:16 <span class="ck">✓✓</span></span></div>';
+var phone='<div class="wa-phone"><div class="wa-top"><span class="wa-back">‹</span><span class="wa-av">PG</span><div class="wa-who"><b>Pedro Giménez</b><small>vecino · en línea</small></div><span class="wa-ic">📹&nbsp;&nbsp;📞</span></div>'
+  +'<div class="wa-body"><span class="wa-day">HOY</span>'+bub+'</div></div>';
+function asigHTML(id){var a=CV_ALERTAS.find(x=>x.id===id);return a.asig?('Designada a <b>'+EMPNAME[a.asig]+'</b>'):'<span class="muted">sin designar</span>';}
+var table='<table><thead><tr><th>Alerta</th><th>Prioridad</th><th>Designar a empresa ejecutora</th><th>Estado</th></tr></thead><tbody>'
+  +CV_ALERTAS.map(function(a){var opts='<option value="">— sin asignar —</option>'+EMPRESAS.map(function(e){return '<option value="'+e.id+'"'+(a.asig===e.id?' selected':'')+'>'+e.nom+'</option>';}).join('');
+    return '<tr><td><b>'+a.tit+'</b><div class="muted" style="font-size:10.5px">'+a.id+' · '+a.loc+'</div></td><td>'+chip(PRIOLBL[a.prio],PRIOCOL[a.prio])+'</td>'
+    +'<td><select class="sel" data-al="'+a.id+'">'+opts+'</select></td><td><span class="cv-asig" data-for="'+a.id+'">'+asigHTML(a.id)+'</span></td></tr>';}).join('')
+  +'</tbody></table>';
+document.getElementById('s-alertas').innerHTML=
+  '<p class="muted" style="font-size:13px;margin:0 0 14px">El vecino avisa por WhatsApp; el consorcio designa cada alerta a la empresa ejecutora que corresponda.</p>'
+  +'<div class="alertgrid"><div>'+phone+'</div><div>'+table+'</div></div>';
+document.querySelectorAll('#s-alertas .sel').forEach(function(sel){sel.addEventListener('change',function(){var id=sel.getAttribute('data-al');var a=CV_ALERTAS.find(x=>x.id===id);a.asig=sel.value;var sp=document.querySelector('.cv-asig[data-for="'+id+'"]');if(sp)sp.innerHTML=asigHTML(id);});});
+</script>
+</body>
+</html>
